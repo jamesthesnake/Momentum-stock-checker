@@ -31,11 +31,9 @@ def handle_data(context, data):
     # data[sid(X)] holds the trade event data for that security.
     # context.portfolio holds the current portfolio state.
     
-    data[sid(28073)] 
     # Place orders with the order(SID, amount) method.
      
     # TODO: implement your own logic here.
-    order(sid(24), 50)
     
      # Using a momentum based trading , simply that if the stock price
             historical_data=history(200,"1d","price)
