@@ -57,7 +57,7 @@ def handle_data(context, data):
     buys.sort()
     sells.sort(ascending=False)
     buys= buys.iloc[:buy_length] if buy_weight !=0 else None
-    sells= sells.iloc[:short_length] if sell_weight !=0 else None
+    sells= sells.iloc[:sell_length] if sell_weight !=0 else None
     
                                     
     stops= historical_data.iloc[-1] *0.02
