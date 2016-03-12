@@ -1,4 +1,4 @@
-    from datetime import datetime,timedelta
+from datetime import datetime,timedelta
 import numpy as np
 def initialize(context):
 set_universe(universe.DollarVolumeUniverse(floor_percentile=99.5,ceiling_percentile=100.0))
@@ -37,9 +37,9 @@ def handle_data(context, data):
     
      # Using a momentum based trading , simply that if the stock price
             historical_data=history(200,"1d","price)
-   50_daymean=historical_data.tail(50).mean()
-  200_daymean= historical_data.tail()
-    diff= 50_daymean/200_daymean -1
+   fifty_daymean=historical_data.tail(50).mean()
+   twohundred_daymean= historical_data.tail()
+   diff= fifty_daymean/twohundred_daymean -1
                                     
                                     
     diff=diff.dropna()
@@ -62,7 +62,7 @@ def handle_data(context, data):
                                     
     stops= historical_data.iloc[-1] *0.02
                                     
-    for sym in data
+    for sym in data:
            if sells is not None and sym in  sells.index:
                    log.info("Short %s" ,sym.symbol)
                    order_target_percent(sym,              short_weight,stop_price=data[sym].price+stops[sym])
