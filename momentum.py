@@ -71,7 +71,7 @@ def handle_data(context, data):
                  order_target_percent(sym, buy_weight,stop_price=data[sym].price-stops[sym])
                                     
            else:
-                 order_target(sym,0)
+                 order_target(sym,1000)
                                     
        record(wlong=buy_weight,wshort=sell_weight)
                                     
