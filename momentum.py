@@ -1,8 +1,8 @@
 from datetime import datetime,timedelta
 import numpy as np
 def initialize(context):
-set_universe(universe.DollarVolumeUniverse(floor_percentile=99.5,ceiling_percentile=100.0))
-    context.stocks_to_long=5
+        set_universe(universe.DollarVolumeUniverse(floor_percentile=99.5,ceiling_percentile=100.0))
+        context.stocks_to_long=5
         context.stocks_to_short=5
         context.rebalance_date=None
         context.rebalance_days=5
@@ -10,16 +10,16 @@ set_universe(universe.DollarVolumeUniverse(floor_percentile=99.5,ceiling_percent
 # Will be called on every trade event for the securities you specify. 
 def handle_data(context, data):
     # Implement your algorithm logic here.
-    if context.rebalance_date != None:
+   if context.rebalance_date != None:
      next_date=context.rebalance_date+timedelta(days=context.rebalance_days)
         
    if(context.rebalance_date == None or get_datetime()==next_date):
-    context.rebalance_date=get_datetime()
+     context.rebalance_date=get_datetime()
    else:    
-        return
+     return
         
     import pytz
-    est= pytz.timezone("US/eastern")
+    est= pytz.timezone("US/Eastern")
     time=est.localize(get_datetime())
     if time.hour == 10 and time.minute == 30:
         for stock in data:
@@ -64,14 +64,14 @@ def handle_data(context, data):
                                     
     for sym in data:
            if sells is not None and sym in  sells.index:
-                   log.info("Short %s" ,sym.symbol)
-                   order_target_percent(sym,              short_weight,stop_price=data[sym].price+stops[sym])
-          elif buys is not None and sym in  buys.index:
-                   log.info("long %s" ,sym.symbol)
-                   order_target_percent(sym,              buy_weight,stop_price=data[sym].price-stops[sym])
+                 log.info("Short %s" ,sym.symbol)
+                 order_target_percent(sym,short_weight,stop_price=data[sym].price+stops[sym])
+           elif buys is not None and sym in  buys.index:
+                 log.info("long %s" ,sym.symbol)
+                 order_target_percent(sym, buy_weight,stop_price=data[sym].price-stops[sym])
                                     
-             else:
-                     order_target(sym,0)
+           else:
+                 order_target(sym,0)
                                     
        record(wlong=buy_weight,wshort=sell_weight)
                                     
