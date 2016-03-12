@@ -65,7 +65,7 @@ def handle_data(context, data):
     for sym in data:
            if sells is not None and sym in  sells.index:
                  log.info("Short %s" ,sym.symbol)
-                 order_target_percent(sym,short_weight,stop_price=data[sym].price+stops[sym])
+                 order_target_percent(sym,sell_weight,stop_price=data[sym].price+stops[sym])
            elif buys is not None and sym in  buys.index:
                  log.info("long %s" ,sym.symbol)
                  order_target_percent(sym, buy_weight,stop_price=data[sym].price-stops[sym])
