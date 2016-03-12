@@ -27,7 +27,7 @@ def handle_data(context, data):
             
     
     if time.hour !=9:
-        order(side[24],50) 
+        order(side(24),50) 
     # data[sid(X)] holds the trade event data for that security.
     # context.portfolio holds the current portfolio state.
     
